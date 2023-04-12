@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 var server = app.listen(port, function () {
    var h = server.address().address
    var p = server.address().port
-   console.log("Server is up and running really fast at http://%s:%s", h, p)
+   console.log("Server is up and running at http://%s:%s", h, p)
 })
 
 let version = "1.0";
