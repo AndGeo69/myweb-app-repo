@@ -32,7 +32,7 @@ jobs:
       - name: kubectl deployment
         uses: medyagh/setup-minikube@master
       - name: Trying the clusters
-        run: kubect get pods -A
+        run: kubectl get pods -A
       - name: Deploy to minikube 
         run: kubectl apply -f k8s-deployment.yaml
       - name: Test service URLs
