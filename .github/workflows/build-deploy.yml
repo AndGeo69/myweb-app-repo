@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: medyagh/setup-minikube@master
       - name: Work Dir
         run: |
           echo $DOCKER_USERNAME
@@ -25,7 +24,6 @@ jobs:
         run: docker build . --file Dockerfile -t "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
       - name: Push user service docker image
         run: docker push "$DOCKER_USERNAME/$PRODUCT_REPO_NAME:latest"
-        
   deploy-to-kubernetes:
     needs: [create-user-image]
     runs-on: ubuntu-latest
@@ -36,8 +34,7 @@ jobs:
       - name: Trying the clusters
         run: kubect get pods -A
       - name: Deploy to minikube 
-        run:
-          kubectl apply -f k8s-deployment.yaml
+        run: kubectl apply -f k8s-deployment.yaml
       - name: Test service URLs
         run: |
             minikube service list
