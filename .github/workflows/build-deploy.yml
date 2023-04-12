@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: kubectl deployment
-      - uses: medyagh/setup-minikube@master
+        uses: medyagh/setup-minikube@master
       - name: Trying the clusters
         run: kubect get pods -A
       - name: Deploy to minikube 
@@ -38,4 +38,4 @@ jobs:
       - name: Test service URLs
         run: |
             minikube service list
-            minikube service myweb-app- --url
+            minikube service myweb-app --url
