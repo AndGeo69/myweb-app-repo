@@ -20,7 +20,7 @@ var server = app.listen(port, function () {
    console.log("Server is up and running at http://%s:%s", h, p)
 })
 
-let version = "1.2";
+let version = "1.3";
 let callCounter = 0;
 
 app.get('/', function (request, response) {
