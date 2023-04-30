@@ -21,6 +21,7 @@ spec:
         image: "mai23005/mywebapp-image:v1.0"
         ports:
           - containerPort: 8080
+        imagePullPolicy: Always
         resources:
           requests:
             cpu: ".1"
@@ -37,7 +38,7 @@ metadata:
 spec:
   selector:
     app: myweb-app
-  type: NodePort
+  type: ClusterIP
   ports:
   - name: http
     targetPort: 8080
