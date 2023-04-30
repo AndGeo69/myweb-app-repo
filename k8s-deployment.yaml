@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: mywebapp-container
-        image: "mai23005/mywebapp-image:latest"
+        image: "myweb-app-repo:master"
         ports:
           - containerPort: 8080
         imagePullPolicy: Always
@@ -33,15 +33,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: myweb-app-service
+  name: ingress-upstream
   labels:
-    app: myweb-app-service
-  namespace: default
+    app: ingress-upstream
 spec:
   selector:
     app: myweb-app
-  type: ClusterIP
   ports:
-  - name: http
-    targetPort: 8080
-    port: 80
+    - name: 80-to-8080
+      protocol: TCP
+      port: 80
+      targetPort: 8080
