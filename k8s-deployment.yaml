@@ -21,6 +21,13 @@ spec:
         image: "mai23005/mywebapp-image:v1.0"
         ports:
           - containerPort: 8080
+        resources:
+          requests:
+            cpu: ".1"
+            memory: ".1Gi"
+          limits:
+            cpu: ".1"
+            memory: ".1Gi"
 ---
 apiVersion: v1
 kind: Service
