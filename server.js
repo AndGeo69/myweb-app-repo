@@ -49,7 +49,7 @@ app.get('/help', function (request, response) {
     let totalmem = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2);
 
     const info = {
-        help: "This is a help json"
+        help: "This is a help json",
     };
 
     response.json(info);
