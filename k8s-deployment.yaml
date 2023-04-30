@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: mywebapp-container
-        image: "myweb-app-repo:master"
+        image: "ghcr.io/andgeo69/myweb-app-repo:master"
         ports:
           - containerPort: 8080
         imagePullPolicy: Always
