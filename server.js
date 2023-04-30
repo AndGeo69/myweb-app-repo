@@ -20,7 +20,7 @@ var server = app.listen(port, function () {
    console.log("Server is up and running at http://%s:%s", h, p)
 })
 
-let version = "1.6";
+let version = "1.7";
 let callCounter = 0;
 
 app.get('/', function (request, response) {
@@ -36,6 +36,20 @@ app.get('/', function (request, response) {
         cpuCount: os.cpus().length,
         memory: 'Total Memory: ' + totalmem + ' GB',
         version: version,
+    };
+
+    response.json(info);
+});
+
+
+app.get('/help', function (request, response) {
+    callCounter++;
+
+    console.log("Received call from client...x" + callCounter);
+    let totalmem = (os.totalmem() / 1024 / 1024 / 1024).toFixed(2);
+
+    const info = {
+        help: "This is a help json"
     };
 
     response.json(info);
