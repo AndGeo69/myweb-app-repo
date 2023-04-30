@@ -33,7 +33,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: myweb-app
+  name: myweb-app-service
+  labels:
+    app: myweb-app-service
   namespace: default
 spec:
   selector:
