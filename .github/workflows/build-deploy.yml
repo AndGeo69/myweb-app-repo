@@ -53,8 +53,8 @@ jobs:
       SECTION_API_TOKEN: "${{secrets.SECTION_API_TOKEN}}"
     steps:
       - uses: actions/checkout@v2
-      - name: kubectl deployment
-        uses: medyagh/setup-minikube@master
+      # - name: kubectl deployment
+      #   uses: medyagh/setup-minikube@master
 
       - name: Trying the clusters
         run: kubectl get pods -A
