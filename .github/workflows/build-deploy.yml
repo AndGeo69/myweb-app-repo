@@ -27,14 +27,24 @@ jobs:
   deploy-to-kubernetes:
     needs: [create-user-image]
     runs-on: ubuntu-latest
+    env:
+      SECTION_K8S_API_URL: "${{secrets.SECTION_K8S_URL}}"
+      SECTION_API_TOKEN: "${{secrets.SECTION_API_TOKEN}}"
     steps:
       - uses: actions/checkout@v2
       - name: kubectl deployment
         uses: medyagh/setup-minikube@master
       - name: Trying the clusters
         run: kubectl get pods -A
-      - name: Deploy to minikube 
-        run: kubectl apply -f k8s-deployment.yaml
+      - name: Configuring kubect to talk to Section 
+        run: |
+            kubectl config set-cluster section-cluster --server=$SECTION_K8S_API_URL
+            kubectl config set-credentials section-user --token=$SECTION_API_TOKEN
+            kubectl config set-context section --cluster=section-cluster --user=section-user
+            kubectl config use-context section
+      - name: Deploying to Section K8S 
+        run: |
+            kubectl apply -f k8s-deployment.yaml
       - name: Test service URLs
         run: |
             minikube service list
