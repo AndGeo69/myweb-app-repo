@@ -45,7 +45,3 @@ jobs:
       - name: Deploying to Section K8S 
         run: |
             kubectl apply -f k8s-deployment.yaml
-      - name: Test service URLs
-        run: |
-            minikube service list
-            minikube service myweb-app --url
